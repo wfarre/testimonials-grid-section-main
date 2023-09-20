@@ -1,0 +1,180 @@
+/* Moderate violet: hsl(263, 55%, 52%)
+Very dark grayish blue: hsl(217, 19%, 35%)
+Very dark blackish blue: hsl(219, 29%, 14%)
+White: hsl(0, 0%, 100%)
+
+### Neutral
+
+Light gray: hsl(0, 0%, 81%)
+Light grayish blue: hsl(210, 46%, 95%) */
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap");
+
+:root {
+  --bg-card--purple: hsl(263, 55%, 52%);
+  --bg-card--blackish: hsl(219, 29%, 14%);
+  --bg-card--gray: hsl(217, 19%, 35%);
+  --bg-card--white: hsl(0, 0%, 100%);
+
+  --text-color--primary: hsl(0, 0%, 81%);
+  --text-color--secondary: hsl(217, 19%, 35%);
+
+  --title-color--primary: hsl(0, 0%, 100%);
+  --title-color--secondary: hsl(217, 19%, 35%);
+}
+
+h1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+  /* color: red; */
+}
+
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+html {
+  color: var(--text-color--primary);
+  font-size: 13px;
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+body {
+  background-color: #ecf2f8;
+}
+
+.main {
+  margin: calc((164 / 900) * 100vh) calc((160 / 1440) * 100vw);
+}
+
+.card {
+  position: relative;
+  padding: 0 calc((32 / 1440) * 100vw);
+  padding-top: 26px;
+  padding-bottom: 32px;
+  border-radius: 8px;
+
+  box-shadow: 40px 60px 50px -47px rgba(72, 85, 106, 0.25);
+  z-index: 1;
+}
+
+.card__header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 18px;
+  z-index: 100;
+}
+
+.card__header .profile-picture {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 100%;
+  overflow: hidden;
+  border: 2px solid white;
+}
+
+.card__header .profile-picture img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.card__header .name {
+  color: var(--title-color--primary);
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.card__header .status {
+  font-size: 11px;
+}
+
+.card__main .title {
+  color: var(--title-color--primary);
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.card__main .content {
+  line-height: 18px;
+}
+
+.card--light {
+  color: var(--title-color--secondary);
+  background-color: var(--bg-card--white);
+}
+
+.card--light .card__main .title {
+  color: var(--title-color--secondary);
+}
+
+.card--light .card__header .name {
+  color: var(--title-color--secondary);
+}
+
+.card:first-child {
+  grid-area: purple;
+  background-color: var(--bg-card--purple);
+  background-image: url("./images/bg-pattern-quotation.svg");
+  background-repeat: no-repeat;
+  background-position: top 0 right 24px;
+}
+
+.card:first-child .card__header .profile-picture {
+  border-color: #a775f1;
+}
+
+.card:nth-child(2) {
+  grid-area: gray;
+  background-color: var(--bg-card--gray);
+}
+
+.card:nth-child(3) {
+  grid-area: white2;
+}
+
+.card:nth-child(4) {
+  grid-area: black;
+  background-color: var(--bg-card--blackish);
+}
+
+.card:nth-child(4) .card__header .profile-picture {
+  border-color: var(--bg-card--purple);
+}
+
+.card:nth-child(5) {
+  grid-area: white1;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  row-gap: calc((24 / 900) * 100vh);
+  column-gap: calc((30 / 1440) * 100vw);
+  grid-template-areas:
+    "purple purple gray white1"
+    "white2 black black white1";
+}
+
+@media all and (max-width: 500px) {
+  .main {
+    margin: 71px 24px;
+  }
+  .container {
+    display: block;
+  }
+
+  .card {
+    padding: calc((32 / 375) * 100vw);
+    margin-bottom: 24px;
+  }
+}
